@@ -96,6 +96,8 @@ public class InRangePlugin extends Plugin {
 		Item weapon = equippedItem.getItem(EquipmentInventorySlot.WEAPON.getSlotIdx());
 		if(weapon == null)
 		{
+			attackRange = 1;
+			currentWeaponID = -1;
 			return;
 		}
 		getAttackRange(weapon.getId());
@@ -107,6 +109,8 @@ public class InRangePlugin extends Plugin {
 		Integer weaponRange = weaponRangeMap.get(weaponID);
 		if(weaponRange == null)
 		{
+			//If a weapon is not found in the Map, set the attack range back to 1.
+			attackRange = 1;
 			return;
 		}
 
@@ -186,7 +190,9 @@ public class InRangePlugin extends Plugin {
 		if(weapon == null)
 		{
 			//If a weapon is unequipped, set range back to 1
+			currentWeaponID = -1;
 			attackRange = 1;
+			isAttackRangeSet = true;
 			return;
 		}
 
