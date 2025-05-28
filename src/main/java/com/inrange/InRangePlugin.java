@@ -17,11 +17,11 @@ import net.runelite.client.plugins.PluginDescriptor;
 import com.google.gson.Gson;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.apache.commons.lang3.ArrayUtils;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Slf4j
@@ -61,19 +61,22 @@ public class InRangePlugin extends Plugin {
 	}
 
 	@Override
-	protected void startUp() throws Exception
+	protected void startUp()
 	{
 		overlayManager.add(inRangeOverlay);
 		updateEnablePlugin();
 
-		//Get a JSON string from a file and turn into a list of Weapons
-		Gson gson = new Gson();
-		TypeToken<List<Weapon>> listType = new TypeToken<>() {};
-		String json = new String(Files.readAllBytes(Paths.get(".\\weapons.json")));
-		List<Weapon> weaponRangeList = gson.fromJson(json, listType.getType());
-
-		//Convert a list of weapons into a map for easy lookup by item id
-		weaponRangeMap = weaponRangeList.stream().collect(Collectors.toMap(Weapon::getId, Weapon::getRange));
+		final Gson gson = new Gson();
+		final TypeToken<Map<Integer,Integer>> typeToken = new TypeToken<>(){};
+		try(InputStream getWeaponRanges = InRangePlugin.class.getResourceAsStream("/weaponRanges.json"))
+		{
+            assert getWeaponRanges != null;
+            weaponRangeMap = gson.fromJson(new InputStreamReader(getWeaponRanges), typeToken.getType());
+		}
+		catch(IOException e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -106,18 +109,45 @@ public class InRangePlugin extends Plugin {
 		{
 			return;
 		}
-		if (isLongRange()) attackRange = Math.min(weaponRange + 2, 10);
-		else attackRange = weaponRange;
 
-	}
+		//Blue moon spear
+		if(currentWeaponType == 22)
+		{
+			//Probably a better way to do this
+			int[] weaponStyleStructs = { 3722, 3723, 3721, 3725, 3728, 3725 };
+			StructComposition attackStyleStruct = client.getStructComposition(weaponStyleStructs[currentAttackStyle]);
+			String attackStyle = attackStyleStruct.getStringValue(ParamID.ATTACK_STYLE_NAME);
+			if(!attackStyle.equals("Casting"))
+			{
+				attackRange = 1;
+			}
+			else
+			{
+				attackRange = weaponRange;
+			}
+			return;
+		}
 
-	private boolean isLongRange()
-	{
 		int weaponStyleEnum = client.getEnum(EnumID.WEAPON_STYLES).getIntValue(currentWeaponType);
 		int[] weaponStyleStructs = client.getEnum(weaponStyleEnum).getIntVals();
 		StructComposition attackStyleStruct = client.getStructComposition(weaponStyleStructs[currentAttackStyle]);
-		String attackStyleName = attackStyleStruct.getStringValue(ParamID.ATTACK_STYLE_NAME);
-		return attackStyleName.equals("Longrange") || attackStyleName.equals("Defensive");
+		String attackStyle = attackStyleStruct.getStringValue(ParamID.ATTACK_STYLE_NAME);
+
+		//If Staff or Bladed Staff and not Casting, set the range to 1
+		if((currentWeaponType == 18 || currentWeaponType == 21) && !attackStyle.equals("Casting"))
+		{
+			attackRange = 1;
+		}
+		//If Longrange on a ranged weapon or Defensive(Longrange) on magic weapon with built-in spell, add 2 to attack range up to a max of 10
+		else if (attackStyle.equals("Longrange") || attackStyle.equals("Defensive"))
+		{
+			attackRange = Math.min(weaponRange + 2, 10);
+		}
+		else
+		{
+			attackRange = weaponRange;
+		}
+
 	}
 
 	@Subscribe
@@ -224,23 +254,5 @@ public class InRangePlugin extends Plugin {
 	public boolean isAreaSpecificChecked()
 	{
 		return config.infernoEnabled() || config.colosseumEnabled() || config.fightCavesEnabled() || config.jadChallengeEnabled();
-	}
-}
-
-class Weapon
-{
-	private final int id;
-	private final int range;
-
-    Weapon(int id, int range) {
-        this.id = id;
-		this.range = range;
-    }
-
-    public int getId() {
-        return id;
-	}
-	public int getRange() {
-        return range;
 	}
 }
