@@ -37,18 +37,6 @@ public interface InRangeConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "outOfRangeColor",
-			name = "Out Of Range",
-			description = "Color to use for when an NPC is out of range",
-			position =  2,
-			section = colorSection
-	)
-	default Color outOfRangeColor()
-	{
-		return Color.RED;
-	}
-
-	@ConfigItem(
 			keyName = "lineOfSightColor",
 			name = "Line of Sight",
 			description = "Color to use for when an NPC is in range but not in line of sight",
@@ -58,6 +46,18 @@ public interface InRangeConfig extends Config
 	default Color lineOfSightColor()
 	{
 		return Color.ORANGE;
+	}
+
+	@ConfigItem(
+			keyName = "outOfRangeColor",
+			name = "Out Of Range",
+			description = "Color to use for when an NPC is out of range",
+			position =  2,
+			section = colorSection
+	)
+	default Color outOfRangeColor()
+	{
+		return Color.RED;
 	}
 
 	@ConfigItem(
