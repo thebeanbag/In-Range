@@ -185,6 +185,8 @@ public class InRangePlugin extends Plugin {
 		Item weapon = itemContainer.getItem(EquipmentInventorySlot.WEAPON.getSlotIdx());
 		if(weapon == null)
 		{
+			//If a weapon is unequipped, set range back to 1
+			attackRange = 1;
 			return;
 		}
 

@@ -98,13 +98,13 @@ public class InRangeOverlay extends Overlay
                     WorldView worldView = client.getTopLevelWorldView();
                     int distance = playerWorldArea.distanceTo(npcWorldArea);
                     //In range but no line of sight
-                    if (distance < plugin.attackRange && !playerWorldArea.hasLineOfSightTo(worldView, npcWorldArea))
+                    if (distance <= plugin.attackRange && !playerWorldArea.hasLineOfSightTo(worldView, npcWorldArea))
                     {
                         modelOutlineRenderer.drawOutline(npc, 4, config.lineOfSightColor(), 4);
 
                     }
                     //In range
-                    else if(distance < plugin.attackRange)
+                    else if(distance <= plugin.attackRange)
                     {
                         modelOutlineRenderer.drawOutline(npc, 4, config.inRangeColor(), 4);
                     }
