@@ -26,4 +26,3 @@ Hover over attackable NPCs to tell whether you are in attack range.
   - Fortis Colosseum
   - TzHaar Fight Cave (Jad)
   - TzHaar-Ket-Rak's Challenges (Jad Challenges)
-![Screenshot of plugin's configuration settings](https://imgur.com/a/3faEFwj)
