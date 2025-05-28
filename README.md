@@ -13,7 +13,7 @@ Hover over attackable NPCs to tell whether you are in attack range.
 * In attack range but no line of sight.
 * Out of attack range.
 
-![hippo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTF2aXhtNGxhdTd5cm1oejlndnRwOHIyamNlb29kcG15ZHFzZWlvMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aasWjyRt0NPxH8sizk/giphy.gif)
+![Demo of plugin features](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTF2aXhtNGxhdTd5cm1oejlndnRwOHIyamNlb29kcG15ZHFzZWlvMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aasWjyRt0NPxH8sizk/giphy.gif)
 
 ## Settings
 ### 1. Highlight Color [Choose a Color]
