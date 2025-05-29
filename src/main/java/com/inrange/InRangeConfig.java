@@ -1,29 +1,68 @@
 package com.inrange;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.ConfigSection;
-
+import net.runelite.client.config.*;
 import java.awt.*;
 
-@ConfigGroup("example")
+@ConfigGroup(InRangeConfig.GROUP)
 public interface InRangeConfig extends Config
 {
+	String GROUP = "In Range";
+
+	@ConfigSection(
+			name = "Highlight Settings",
+			description =  "Check which modes you'd like to highlight enemies.",
+			position = 0
+	)
+	String highlightSection = "highlightSection";
+
+	@ConfigItem(
+			keyName = "inRangeEnabled",
+			name = "In Range",
+			description = "Highlight enemy when they are in range.",
+			position = 1,
+			section = highlightSection
+	)
+	default boolean inRangeEnabled()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			keyName = "losEnabled",
+			name = "Line of Sight",
+			description = "Highlight enemy when they are in range but not in line of sight.",
+			position = 2,
+			section = highlightSection
+	)
+	default boolean losEnabled()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			keyName = "outOfRangeEnabled",
+			name = "Out of Range",
+			description = "Highlight enemy when they are out of range.",
+			position = 3,
+			section = highlightSection
+	)
+	default boolean outOfRangeEnabled()
+	{
+		return true;
+	}
+
+	//------------------------------------------------------------//
+	// Color Settings
+	//------------------------------------------------------------//
+
 	@ConfigSection(
 			name = "Colors",
 			description = "Set color for various states.",
-			position = 0
+			position = 1
 	)
 	String colorSection = "colorSection";
 
-	@ConfigSection(
-			name = "Areas",
-			description = "Check which areas you'd like the plugin to be enabled (uncheck all to enable everywhere).",
-			position =  1
-	)
-	String areaSection = "areaSection";
-
+	@Alpha
 	@ConfigItem(
 			keyName = "inRangeColor",
 			name = "In Range",
@@ -35,30 +74,41 @@ public interface InRangeConfig extends Config
 	{
 		return Color.GREEN;
 	}
-
+	@Alpha
 	@ConfigItem(
 			keyName = "lineOfSightColor",
 			name = "Line of Sight",
 			description = "Color to use for when an NPC is in range but not in line of sight",
-			position =  3,
+			position =  2,
 			section = colorSection
 	)
 	default Color lineOfSightColor()
 	{
 		return Color.ORANGE;
 	}
-
+	@Alpha
 	@ConfigItem(
 			keyName = "outOfRangeColor",
 			name = "Out Of Range",
 			description = "Color to use for when an NPC is out of range",
-			position =  2,
+			position =  3,
 			section = colorSection
 	)
 	default Color outOfRangeColor()
 	{
 		return Color.RED;
 	}
+
+	//------------------------------------------------------------//
+	// Area Settings
+	//------------------------------------------------------------//
+
+	@ConfigSection(
+			name = "Areas",
+			description = "Check which areas you'd like the plugin to be enabled (uncheck all to enable everywhere).",
+			position = 2
+	)
+	String areaSection = "areaSection";
 
 	@ConfigItem(
 			keyName = "infernoEnabled",

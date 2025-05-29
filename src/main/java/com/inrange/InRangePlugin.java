@@ -64,7 +64,6 @@ public class InRangePlugin extends Plugin {
 	protected void startUp()
 	{
 		overlayManager.add(inRangeOverlay);
-		updateEnablePlugin();
 
 		final Gson gson = new Gson();
 		final TypeToken<Map<Integer,Integer>> typeToken = new TypeToken<>(){};

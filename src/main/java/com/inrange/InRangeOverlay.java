@@ -100,17 +100,20 @@ public class InRangeOverlay extends Overlay
                     //In range but no line of sight
                     if (distance <= plugin.attackRange && !playerWorldArea.hasLineOfSightTo(worldView, npcWorldArea))
                     {
+                        if(!config.losEnabled())break;
                         modelOutlineRenderer.drawOutline(npc, 4, config.lineOfSightColor(), 4);
 
                     }
                     //In range
                     else if(distance <= plugin.attackRange)
                     {
+                        if(!config.inRangeEnabled()) break;
                         modelOutlineRenderer.drawOutline(npc, 4, config.inRangeColor(), 4);
                     }
                     //Out of range
-                    else
+                    else if(config.outOfRangeEnabled())
                     {
+                        if(!config.outOfRangeEnabled()) break;
                         modelOutlineRenderer.drawOutline(npc, 4, config.outOfRangeColor(), 4);
                     }
                 }
