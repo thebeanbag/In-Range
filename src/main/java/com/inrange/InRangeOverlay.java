@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 2025, thebeanbag <https://github.com/thebeanbag/In-Range>
  * Copyright (c) 2021, Adam <Adam@sigterm.info>
  * All rights reserved.
  *

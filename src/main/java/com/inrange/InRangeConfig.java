@@ -157,4 +157,16 @@ public interface InRangeConfig extends Config
 	{
 		return true;
 	}
+
+	@ConfigItem(
+			keyName = "zebakEnabled",
+			name = "Zebak Room in Tombs of Amascut",
+			description = "Enable plugin during Zebak fight",
+			position = 5,
+			section = areaSection
+	)
+	default boolean zebakEnabled()
+	{
+		return true;
+	}
 }

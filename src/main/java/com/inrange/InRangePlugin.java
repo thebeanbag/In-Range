@@ -18,6 +18,8 @@ import com.google.gson.Gson;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.apache.commons.lang3.ArrayUtils;
 
+
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -34,6 +36,7 @@ public class InRangePlugin extends Plugin {
 	private static final int INFERNO_REGION = 9043;
 	private static final int JAD_CHALLENGE_VAR = 11878; // 0 = out, 1 = in
 	private static final int COLOSSEUM_REGION = 7216;
+	private static final int ZEBAK_REGION = 15700;
 
 	@Inject
 	private Client client;
@@ -226,11 +229,12 @@ public class InRangePlugin extends Plugin {
 		updateEnablePlugin();
 	}
 
+	//Definitely a better way to do this...
 	public void updateEnablePlugin()
 	{
 		if(isAreaSpecificChecked())
 		{
-			enablePlugin = isInFightCaves() || isInInferno() || isInColosseum() || isInJadChallenge();
+			enablePlugin = isInFightCaves() || isInInferno() || isInColosseum() || isInJadChallenge() || isInZebak();
 		}
 		else
 		{
@@ -258,8 +262,13 @@ public class InRangePlugin extends Plugin {
 		return config.jadChallengeEnabled() && ArrayUtils.contains(client.getVarps(), JAD_CHALLENGE_VAR);
 	}
 
+	public boolean isInZebak()
+	{
+		return config.zebakEnabled() && ArrayUtils.contains(client.getTopLevelWorldView().getMapRegions(), ZEBAK_REGION);
+	}
+
 	public boolean isAreaSpecificChecked()
 	{
-		return config.infernoEnabled() || config.colosseumEnabled() || config.fightCavesEnabled() || config.jadChallengeEnabled();
+		return config.infernoEnabled() || config.colosseumEnabled() || config.fightCavesEnabled() || config.jadChallengeEnabled() || config.zebakEnabled();
 	}
 }
