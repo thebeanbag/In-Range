@@ -13,7 +13,7 @@ Hover over attackable NPCs to tell whether you are in attack range.
 * In attack range but no line of sight.
 * Out of attack range.
 
-![Demo of plugin features](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTF2aXhtNGxhdTd5cm1oejlndnRwOHIyamNlb29kcG15ZHFzZWlvMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aasWjyRt0NPxH8sizk/giphy.gif)
+![Demo of plugin features](https://raw.githubusercontent.com/thebeanbag/In-Range/refs/heads/master/assets/in_range_demo.gif?token=GHSAT0AAAAAADDR7TSTWPPHC37OYCLOYCJ62BWSKIQ)
 
 ## Settings
 ### 1. Highlight Color [Choose a Color]
@@ -26,3 +26,5 @@ Hover over attackable NPCs to tell whether you are in attack range.
   - Fortis Colosseum
   - TzHaar Fight Cave (Jad)
   - TzHaar-Ket-Rak's Challenges (Jad Challenges)
+
+![Plugin settings](https://raw.githubusercontent.com/thebeanbag/In-Range/refs/heads/master/assets/in_range_settings.png?token=GHSAT0AAAAAADDR7TSTYT3WQAVAZJOU6N5I2BWSLSA)
