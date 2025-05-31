@@ -72,6 +72,8 @@ public class InRangePlugin extends Plugin
 	private OverlayManager overlayManager;
 	@Inject
 	private InRangeOverlay inRangeOverlay;
+	@Inject
+	private Gson gson;
 
 	private Map<Integer, Integer> weaponRangeMap;
 
@@ -94,7 +96,6 @@ public class InRangePlugin extends Plugin
 	{
 		overlayManager.add(inRangeOverlay);
 
-		final Gson gson = new Gson();
 		final TypeToken<Map<Integer,Integer>> typeToken = new TypeToken<>(){};
 		try(InputStream getWeaponRanges = InRangePlugin.class.getResourceAsStream("/weaponRanges.json"))
 		{
