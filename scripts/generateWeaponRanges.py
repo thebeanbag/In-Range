@@ -1,9 +1,7 @@
 """
-    Script to generate an equipment.json of all the equipment on the OSRS Wiki, and downloads images for each item.
-    The JSON file is placed in ../src/lib/equipment.json.
-
-    The images are placed in ../cdn/equipment/. This directory is NOT included in the Next.js app bundle, and should
-    be deployed separately to our file storage solution.
+    Script to generate a weaponRanges.json file of all weapons on the OSRS Wiki with an attack range greater than 1.
+    The JSON file is placed in ../src/main/resources/weaponRanges.json.
+    Originally written by jayktaylor and the OSRS DPS Calculator team at https://github.com/weirdgloop/osrs-dps-calc
 
     Written for Python 3.9.
 """
@@ -33,7 +31,7 @@ def getEquipmentData():
             'query': '[[Equipment slot::+]][[Item ID::+]]|?' + '|?'.join(REQUIRED_PRINTOUTS) + '|limit=500|offset=' + str(offset)
         }
         r = requests.get(API_BASE + '?' + urllib.parse.urlencode(query), headers={
-            'User-Agent': 'osrs-dps-calc (https://github.com/weirdgloop/osrs-dps-calc)'
+            'User-Agent': 'in-range-plugin (https://github.com/thebeanbag/In-Range)'
         })
         data = r.json()
 
