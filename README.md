@@ -28,3 +28,9 @@ Hover over attackable NPCs to tell whether you are in attack range.
   - TzHaar-Ket-Rak's Challenges (Jad Challenges)
 
 ![Plugin settings](https://raw.githubusercontent.com/thebeanbag/In-Range/refs/heads/master/assets/in_range_settings.png?token=GHSAT0AAAAAADDR7TSTYT3WQAVAZJOU6N5I2BWSLSA)
+
+## Acknowledgements
+* OSRS DPS Calculator for the script to pull all the weapon ranges from the Wiki (https://github.com/weirdgloop/osrs-dps-calc)
+* RuneLite Attack Styles plugin for code on how to get different weapon types and attack styles (https://github.com/runelite/runelite/tree/master/runelite-client/src/main/java/net/runelite/client/plugins/attackstyles)
+* RuneLite Interact Highlight plugin for the overlay code to actually highlight enemy NPCs on hover (https://github.com/runelite/runelite/tree/master/runelite-client/src/main/java/net/runelite/client/plugins/interacthighlight)
+* TzHaar HP Tracker for code on how to check which map region the player is in (https://github.com/MoreBuchus/buchus-plugins/tree/tzhaar-hp-tracker)
