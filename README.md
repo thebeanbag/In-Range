@@ -3,7 +3,7 @@
 Hover over attackable NPCs to tell whether you are in attack range.
 
 ## Features
-- Customizable to be enabled only in Inferno, Colosseum, Fight Caves, Jad Challenges.
+- Customizable to be enabled only in Inferno, Colosseum, Fight Caves, Jad Challenges, etc.
 - Updates as Player and/or NPC moves.
 - Updates range when weapon changes e.g. Blowpipe -> Toxic Trident.
 - Updates when attack style changes e.g. Rapid -> Longrange or Staff Bash -> Autocast.
