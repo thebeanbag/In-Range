@@ -13,8 +13,6 @@ Hover over attackable NPCs to tell whether you are in attack range.
 * In attack range but no line of sight.
 * Out of attack range.
 
-![Demo of plugin features](https://raw.githubusercontent.com/thebeanbag/In-Range/refs/heads/master/assets/in_range_demo.gif?token=GHSAT0AAAAAADDR7TSTWPPHC37OYCLOYCJ62BWSKIQ)
-
 ## Settings
 ### 1. Highlight Color [Choose a Color]
    - (Default GREEN) In range and LOS.
@@ -26,8 +24,6 @@ Hover over attackable NPCs to tell whether you are in attack range.
   - Fortis Colosseum
   - TzHaar Fight Cave (Jad)
   - TzHaar-Ket-Rak's Challenges (Jad Challenges)
-
-![Plugin settings](https://raw.githubusercontent.com/thebeanbag/In-Range/refs/heads/master/assets/in_range_settings.png?token=GHSAT0AAAAAADDR7TSTYT3WQAVAZJOU6N5I2BWSLSA)
 
 ## Acknowledgements
 * OSRS DPS Calculator for the script to pull all the weapon ranges from the Wiki (https://github.com/weirdgloop/osrs-dps-calc)
