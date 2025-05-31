@@ -45,9 +45,6 @@ import net.runelite.client.plugins.PluginDescriptor;
 import com.google.gson.Gson;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.apache.commons.lang3.ArrayUtils;
-
-
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -58,7 +55,8 @@ import java.util.*;
 @PluginDescriptor(
 	name = "In Range"
 )
-public class InRangePlugin extends Plugin {
+public class InRangePlugin extends Plugin
+{
 
 	private static final int FIGHT_CAVES_REGION = 9551;
 	private static final int INFERNO_REGION = 9043;
